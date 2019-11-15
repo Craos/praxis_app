@@ -4,20 +4,20 @@ import 'package:praxis/utilidades/constants.dart';
 
 class Solicitacoes {
 
-  String id;
+  int id;
   DateTime firstdate;
   dynamic lastdate;
   dynamic purgedate;
   String firstuser;
   dynamic lastuser;
   dynamic purgeuser;
-  String fornecedor;
+  int fornecedor;
   dynamic contrato;
   String titulo;
   String descricao;
   String responsavel;
-  String situacao;
-  String progresso;
+  int situacao;
+  int progresso;
 
   Solicitacoes({
     this.id,
@@ -60,7 +60,7 @@ class Solicitacoes {
         url: Constants.SOLICITACOES_URL,
         parse: (response) {
           final result = json.decode(response.body);
-          Iterable list = result['data'];
+          Iterable list = result;
           return list.map((model) => Solicitacoes.fromJson(model)).toList();
         }
     );

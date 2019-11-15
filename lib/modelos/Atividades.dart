@@ -4,14 +4,14 @@ import 'package:praxis/utilidades/constants.dart';
 
 class Atividades {
 
-  String id;
+  int id;
   DateTime firstdate;
-  dynamic lastdate;
+  DateTime lastdate;
   dynamic purgedate;
   String firstuser;
-  dynamic lastuser;
+  String lastuser;
   dynamic purgeuser;
-  String pmo;
+  int pmo;
   String observacoes;
   dynamic documento;
   dynamic documentoTipo;
@@ -31,13 +31,14 @@ class Atividades {
   });
 
   factory Atividades.fromJson(Map<String, dynamic> json) {
+
     return Atividades(
       id: json["id"],
       firstdate: DateTime.parse(json["firstdate"]),
-      lastdate: json["lastdate"],
+      lastdate: json["lastdate"] == null ? null : DateTime.parse(json["lastdate"]),
       purgedate: json["purgedate"],
       firstuser: json["firstuser"],
-      lastuser: json["lastuser"],
+      lastuser: json["lastuser"] == null ? null : json["lastuser"],
       purgeuser: json["purgeuser"],
       pmo: json["pmo"],
       observacoes: json["observacoes"],
@@ -50,12 +51,34 @@ class Atividades {
     return Resource(
         url: Constants.ATIVIDADES_URL,
         parse: (response) {
-
-          print(response.body);
-
           final result = json.decode(response.body);
-          Iterable list = result['data'];
+          Iterable list = result;
           return list.map((model) => Atividades.fromJson(model)).toList();
+        }
+    );
+  }
+
+  static Resource<Atividades> get save {
+    return Resource(
+        url: Constants.ATIVIDADES_URL,
+        parse: (response) {
+          final result = json.decode(response.body);
+          Iterable list = result;
+
+          var item = list.first;
+          return new Atividades(
+            id: item["id"],
+            firstdate: DateTime.parse(item["firstdate"]),
+            lastdate: item["lastdate"] == null ? null : DateTime.parse(item["lastdate"]),
+            purgedate: item["purgedate"],
+            firstuser: item["firstuser"],
+            lastuser: item["lastuser"] == null ? null : item["lastuser"],
+            purgeuser: item["purgeuser"],
+            pmo: item["pmo"],
+            observacoes: item["observacoes"],
+            documento: item["documento"].toString(),
+            documentoTipo: item["documento_tipo"].toString()
+          );
         }
     );
   }

@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
@@ -10,24 +13,43 @@ class Resource<T> {
 
 class Webservice {
 
-  Future<T> load<T>(Resource<T> resource) async {
+  Future<T> load<T>(Resource<T> resource, [Map<String, String> queryParameters]) async {
 
-    // Define some headers and query parameters
     Map<String, String> headers = {
       "Accept": "application/json"
-    };
-    Map<String, String> queryParameters = {
-      "campos": "*",
     };
 
     Uri uri = Uri.parse(resource.url);
     final newURI = uri.replace(queryParameters: queryParameters);
-
     final response = await http.get(newURI, headers: headers);
-    if(response.statusCode == 200) {
+
+    if(response.statusCode == HttpStatus.ok) {
       return resource.parse(response);
     } else {
-      throw Exception('Failed to load data!');
+      var  codigo = response.statusCode;
+      throw Exception("Falha na requisição o servidor retornou o erro: $codigo");
+    }
+  }
+
+
+  Future<T> send<T>(Resource<T> resource,  {Map<String, String> queryParameters, Map<String, String> params}) async {
+
+    Map<String, String> headers = {
+      'Content-type': 'application/json',
+      'Prefer': 'return=representation'
+    };
+
+    Uri uri = Uri.parse(resource.url);
+    final newURI = uri.replace(queryParameters: queryParameters);
+    final body = json.encode(params);
+    final response = await http.post(newURI, body: body, headers: headers);
+
+
+    if(response.statusCode == HttpStatus.created) {
+      return resource.parse(response);
+    } else {
+      var  codigo = response.statusCode;
+      throw Exception("Falha na requisição o servidor retornou o erro: $codigo");
     }
   }
 

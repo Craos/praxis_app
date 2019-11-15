@@ -58,6 +58,25 @@ class _app extends State<Home> {
 
   Card _buildItemsForListView(BuildContext context, int index) {
 
+    Color getColor(String selector) {
+      switch(selector) {
+        case '1':
+          return Colors.lightGreen;
+          break;
+        case '2':
+          return Colors.blue;
+          break;
+        case '3':
+          return Colors.deepOrange;
+          break;
+        case '4':
+          return Colors.grey;
+          break;
+        default:
+      }
+
+    }
+
     return Card(
         color: Colors.white,
         margin: new EdgeInsets.all(10),
@@ -69,7 +88,10 @@ class _app extends State<Home> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
-              leading: Icon(Icons.album),
+              leading: Icon(
+                  Icons.assignment_turned_in,
+                  color: getColor(listadeSolicitacoes[index].situacao.toString())
+              ),
               title: Text(listadeSolicitacoes[index].titulo),
               subtitle: Text(listadeSolicitacoes[index].descricao),
             ),

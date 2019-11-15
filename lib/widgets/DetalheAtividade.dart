@@ -4,18 +4,29 @@ import 'package:praxis/modelos/Atividades.dart';
 import 'package:praxis/modelos/Solicitacoes.dart';
 import 'package:praxis/servicos/webservice.dart';
 
-import 'ComentarAtividade.dart';
+//import 'ComentarAtividade.dart';
 
 class DetalheSolicitacao extends StatefulWidget {
-  DetalheSolicitacao(Solicitacoes listadeSolicitaco, {Key key}) : super(key: key);
+  var Solicitaco;
+
+  DetalheSolicitacao(Solicitacoes listadeSolicitaco, {Key key})
+      : super(key: key) {
+    Solicitaco = listadeSolicitaco.id;
+  }
 
   @override
-  _Atividades createState() => _Atividades();
+  _Atividades createState() => _Atividades(Solicitaco);
 }
 
 class _Atividades extends State<DetalheSolicitacao> {
+  final ComentarioController = TextEditingController();
 
+  var IdTarefa;
   List<Atividades> listadeAtividades = List<Atividades>();
+
+  _Atividades(id) {
+    IdTarefa = id;
+  }
 
   @override
   void initState() {
@@ -24,17 +35,29 @@ class _Atividades extends State<DetalheSolicitacao> {
   }
 
   void CarregaAtividades() {
+    Map<String, String> params = {"pmo": "eq." + IdTarefa.toString()};
 
-    Webservice().load(Atividades.all).then((itemAtividade) => {
-      setState(() => {
-        listadeAtividades = itemAtividade
-      })
-    });
+    Webservice().load(Atividades.all, params).then((itemAtividade) => {
+          setState(() => {listadeAtividades = itemAtividade})
+        });
+  }
 
+  void SalvarComentario() {
+    Map<String, String> params = {
+      "pmo": IdTarefa.toString(),
+      "firstuser": 'oberdan',
+      "observacoes": ComentarioController.text
+    };
+
+    Webservice().send(Atividades.save, params: params).then((itemAtividade) => {
+          setState(() => {
+                listadeAtividades.insert(
+                    listadeAtividades.length, itemAtividade)
+              })
+        });
   }
 
   Card _buildItemsForListView(BuildContext context, int index) {
-
     return Card(
       color: Colors.white,
       margin: new EdgeInsets.all(3),
@@ -53,14 +76,12 @@ class _Atividades extends State<DetalheSolicitacao> {
             ),
             subtitle: Row(
               children: <Widget>[
-                Text(
-                    listadeAtividades[index].firstdate.toString()
-                ),
+                Text(listadeAtividades[index].firstdate.toString()),
                 SizedBox(
                   width: 10,
                 ),
                 Text(
-                    listadeAtividades[index].firstuser,
+                  listadeAtividades[index].firstuser,
                   style: TextStyle(
                     color: Theme.of(context).primaryColor,
                   ),
@@ -68,14 +89,26 @@ class _Atividades extends State<DetalheSolicitacao> {
               ],
             ),
           ),
-          ButtonTheme.bar( // make buttons use the appropriate styles for cards
+          ButtonTheme.bar(
+            // make buttons use the appropriate styles for cards
             child: ButtonBar(
               children: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.more_vert),
-                  color: Theme.of(context).disabledColor,
-                  onPressed: () => null,
-                ),
+                Center(
+                  child: PopupMenuButton(
+                    child: Icon(Icons.more_vert),
+                    itemBuilder: (context) => [
+                      PopupMenuItem(
+                        child: Text("InduceSmile.com"),
+                      ),
+                      PopupMenuItem(
+                        child: Text("Flutter.io"),
+                      ),
+                      PopupMenuItem(
+                        child: Text("Google.com"),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),
@@ -86,12 +119,9 @@ class _Atividades extends State<DetalheSolicitacao> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: new AppBar(
-
-      ),
+      appBar: new AppBar(),
       body: Stack(
         children: <Widget>[
           ListView.builder(
@@ -99,13 +129,43 @@ class _Atividades extends State<DetalheSolicitacao> {
             itemBuilder: _buildItemsForListView,
           ),
           Positioned(
-            bottom: 0,
-            child: ComentarAtividade()
-          )
-
+              bottom: 0,
+              child: Container(
+                  height: 56,
+                  padding:
+                      EdgeInsets.only(left: 8, top: 4, bottom: 4, right: 8),
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).scaffoldBackgroundColor,
+                      boxShadow: [
+                        BoxShadow(color: Colors.black12, blurRadius: 4)
+                      ]),
+                  width: MediaQuery.of(context).size.width,
+                  child: Container(
+                    padding: EdgeInsets.all(5),
+                    child: Row(
+                      children: <Widget>[
+                        new Flexible(
+                          child: new TextField(
+                            controller: ComentarioController,
+                            decoration: InputDecoration(
+                                border: InputBorder.none,
+                                icon: Icon(Icons.call_to_action),
+                                hintText: 'Detalhes do atendimento'),
+                            style: Theme.of(context).textTheme.body1,
+                          ),
+                        ),
+                        IconButton(
+                            icon: Icon(Icons.insert_comment),
+                            color: Colors.black54,
+                            onPressed: () {
+                              SalvarComentario();
+                              ComentarioController.clear();
+                            }),
+                      ],
+                    ),
+                  )))
         ],
       ),
-
     );
   }
 }

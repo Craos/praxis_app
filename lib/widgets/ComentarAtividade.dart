@@ -1,18 +1,63 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:praxis/modelos/Atividades.dart';
+import 'package:praxis/servicos/webservice.dart';
 
 class ComentarAtividade extends StatefulWidget{
 
+  StreamController changeController = StreamController<ComentarAtividadeState>();
+
+  var pmo;
+
+  ComentarAtividade(idTarefa) {
+    pmo = idTarefa;
+  }
+
+
   @override
   State<StatefulWidget> createState() {
-    return ComentarAtividadeState();
+    return ComentarAtividadeState(pmo);
+    //return ComentarAtividadeState();
   }
 
 }
 
 class ComentarAtividadeState extends State<ComentarAtividade> {
 
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
+  }
+
+
   Color backgroundColor = Colors.white;
+  var pmo;
+
+  ComentarAtividadeState(id) {
+    pmo = id;
+  }
+
+  void SalvarComentario() {
+
+    Map<String, String> params = {
+      "pmo": pmo.toString(),
+      "firstuser": 'oberdan',
+      "observacoes": myController.text
+    };
+
+    Webservice().send(Atividades.all, params: params ).then((itemAtividade) => {
+      setState(() => {
+
+      })
+    });
+
+  }
 
 
   @override
@@ -36,6 +81,7 @@ class ComentarAtividadeState extends State<ComentarAtividade> {
             children: <Widget>[
               new Flexible(
                 child: new TextField(
+                  controller: myController,
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       icon: Icon(Icons.call_to_action),
@@ -47,7 +93,7 @@ class ComentarAtividadeState extends State<ComentarAtividade> {
               IconButton(
                 icon: Icon(Icons.insert_comment),
                 color: Colors.black54,
-                onPressed: () => null,
+                onPressed: () => SalvarComentario()
               ),
             ],
           ),
