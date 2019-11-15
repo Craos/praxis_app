@@ -48,7 +48,7 @@ class _app extends State<Home> {
 
   void CarregaAtividades() {
 
-    Webservice().load(Solicitacoes.all).then((itemSolicitado) => {
+    Webservice().get(Solicitacoes.all).then((itemSolicitado) => {
       setState(() => {
         listadeSolicitacoes = itemSolicitado
       })
@@ -103,7 +103,7 @@ class _app extends State<Home> {
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(
-                            builder: (context) => DetalheSolicitacao(listadeSolicitacoes[index])
+                            builder: (context) => detalheSolicitacao(listadeSolicitacoes[index])
                           ));
                     },
                   ),

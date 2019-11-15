@@ -3,64 +3,101 @@ import 'package:flutter/material.dart';
 import 'package:praxis/modelos/Atividades.dart';
 import 'package:praxis/modelos/Solicitacoes.dart';
 import 'package:praxis/servicos/webservice.dart';
+import 'package:intl/intl.dart';
 
-//import 'ComentarAtividade.dart';
+class detalheSolicitacao extends StatefulWidget {
+  Solicitacoes Solicitacao;
 
-class DetalheSolicitacao extends StatefulWidget {
-  var Solicitaco;
-
-  DetalheSolicitacao(Solicitacoes listadeSolicitaco, {Key key})
+  detalheSolicitacao(Solicitacoes itemSolicitacao, {Key key})
       : super(key: key) {
-    Solicitaco = listadeSolicitaco.id;
+    Solicitacao = itemSolicitacao;
   }
 
   @override
-  _Atividades createState() => _Atividades(Solicitaco);
+  _Atividades createState() => _Atividades(Solicitacao);
 }
 
-class _Atividades extends State<DetalheSolicitacao> {
+class _Atividades extends State<detalheSolicitacao> {
   final ComentarioController = TextEditingController();
 
-  var IdTarefa;
+  Solicitacoes ItemSolicitacao;
   List<Atividades> listadeAtividades = List<Atividades>();
+  ScrollController _scrollController = new ScrollController();
 
-  _Atividades(id) {
-    IdTarefa = id;
+  _Atividades(Solicitacao) {
+    ItemSolicitacao = Solicitacao;
   }
 
   @override
   void initState() {
     super.initState();
-    CarregaAtividades();
+    carregaAtividades();
   }
 
-  void CarregaAtividades() {
-    Map<String, String> params = {"pmo": "eq." + IdTarefa.toString()};
+  void carregaAtividades() {
+    Map<String, String> params = {
+      "pmo": "eq." + ItemSolicitacao.id.toString(),
+      "order":"id.asc"
+    };
 
-    Webservice().load(Atividades.all, params).then((itemAtividade) => {
-          setState(() => {listadeAtividades = itemAtividade})
+    Webservice().get(Atividades.all, params).then((itemAtividade) => {
+          setState(() => {listadeAtividades = itemAtividade}),
+          _scrollController.animateTo(
+            0.0,
+            curve: Curves.easeOut,
+            duration: const Duration(milliseconds: 300),
+          )
         });
   }
 
-  void SalvarComentario() {
+  void salvarComentario() {
     Map<String, String> params = {
-      "pmo": IdTarefa.toString(),
+      "pmo": ItemSolicitacao.id.toString(),
       "firstuser": 'oberdan',
       "observacoes": ComentarioController.text
     };
 
-    Webservice().send(Atividades.save, params: params).then((itemAtividade) => {
-          setState(() => {
-                listadeAtividades.insert(
-                    listadeAtividades.length, itemAtividade)
-              })
-        });
+    Webservice()
+        .post(Atividades.insert, params: params)
+        .then((itemAtividade) => {
+              setState(() => {
+                    listadeAtividades.insert(
+                        listadeAtividades.length, itemAtividade)
+                  }),
+              _scrollController.animateTo(
+                0.0,
+                curve: Curves.easeOut,
+                duration: const Duration(milliseconds: 300),
+              )
+            });
+  }
+
+  void finalizarTarefa() {
+    Map<String, String> queryParameters = {
+      "id": "eq." + ItemSolicitacao.id.toString()
+    };
+
+    Map<String, String> params = {"situacao": "3"};
+
+    Webservice()
+        .patch(Solicitacoes.update,
+            queryParameters: queryParameters, params: params)
+        .then((itemAtividade) => {
+              setState(() => {Navigator.pop(context)})
+            });
+  }
+
+  void obterFoto() {
+    return null;
   }
 
   Card _buildItemsForListView(BuildContext context, int index) {
+    var formatter = new DateFormat('dd/MM/yyyy H:m');
+    String firstdade = formatter.format(listadeAtividades[index].firstdate);
+
     return Card(
       color: Colors.white,
-      margin: new EdgeInsets.all(3),
+      margin: new EdgeInsets.only(top: 2.0),
       elevation: 1,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(2.0),
@@ -69,16 +106,17 @@ class _Atividades extends State<DetalheSolicitacao> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            leading: Icon(Icons.text_rotation_angledown),
+            leading: Icon(Icons.title),
             title: Container(
               padding: EdgeInsets.only(bottom: 12),
               child: Text(listadeAtividades[index].observacoes),
             ),
             subtitle: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                Text(listadeAtividades[index].firstdate.toString()),
+                Text(firstdade),
                 SizedBox(
-                  width: 10,
+                  width: 5,
                 ),
                 Text(
                   listadeAtividades[index].firstuser,
@@ -86,29 +124,51 @@ class _Atividades extends State<DetalheSolicitacao> {
                     color: Theme.of(context).primaryColor,
                   ),
                 ),
-              ],
-            ),
-          ),
-          ButtonTheme.bar(
-            // make buttons use the appropriate styles for cards
-            child: ButtonBar(
-              children: <Widget>[
-                Center(
-                  child: PopupMenuButton(
-                    child: Icon(Icons.more_vert),
-                    itemBuilder: (context) => [
-                      PopupMenuItem(
-                        child: Text("InduceSmile.com"),
-                      ),
-                      PopupMenuItem(
-                        child: Text("Flutter.io"),
-                      ),
-                      PopupMenuItem(
-                        child: Text("Google.com"),
-                      ),
+                ButtonTheme.bar(
+                  child: ButtonBar(
+                    children: <Widget>[
+                      Center(
+                        child: PopupMenuButton(
+                          onSelected: (result) {
+                            switch (result) {
+                              case 'encerrar':
+                                finalizarTarefa();
+                                break;
+                              case 'foto':
+                                obterFoto();
+                                break;
+                            }
+                          },
+                          child: Icon(Icons.more_vert),
+                          itemBuilder: (context) => [
+                            PopupMenuItem(
+                              value: 'encerrar',
+                              child: Row(
+                                children: <Widget>[
+                                  Container(
+                                      padding: EdgeInsets.only(right: 8),
+                                      child: Icon(Icons.flag)),
+                                  Text("Encerrar atividades")
+                                ],
+                              ),
+                            ),
+                            PopupMenuItem(
+                              value: 'foto',
+                              child: Row(
+                                children: <Widget>[
+                                  Container(
+                                      padding: EdgeInsets.only(right: 8),
+                                      child: Icon(Icons.add_a_photo)),
+                                  Text("Obter foto")
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -124,10 +184,20 @@ class _Atividades extends State<DetalheSolicitacao> {
       appBar: new AppBar(),
       body: Stack(
         children: <Widget>[
-          ListView.builder(
-            itemCount: listadeAtividades.length,
-            itemBuilder: _buildItemsForListView,
-          ),
+
+
+              ListView.builder(
+                scrollDirection: Axis.vertical,
+                controller: _scrollController,
+                shrinkWrap: true,
+                itemCount: listadeAtividades.length,
+                itemBuilder: _buildItemsForListView,
+              ),
+
+
+
+
+
           Positioned(
               bottom: 0,
               child: Container(
@@ -158,12 +228,14 @@ class _Atividades extends State<DetalheSolicitacao> {
                             icon: Icon(Icons.insert_comment),
                             color: Colors.black54,
                             onPressed: () {
-                              SalvarComentario();
+                              salvarComentario();
                               ComentarioController.clear();
                             }),
                       ],
                     ),
-                  )))
+                  )
+              )
+          )
         ],
       ),
     );

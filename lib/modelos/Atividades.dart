@@ -58,7 +58,32 @@ class Atividades {
     );
   }
 
-  static Resource<Atividades> get save {
+  static Resource<Atividades> get insert {
+    return Resource(
+        url: Constants.ATIVIDADES_URL,
+        parse: (response) {
+          final result = json.decode(response.body);
+          Iterable list = result;
+
+          var item = list.first;
+          return new Atividades(
+            id: item["id"],
+            firstdate: DateTime.parse(item["firstdate"]),
+            lastdate: item["lastdate"] == null ? null : DateTime.parse(item["lastdate"]),
+            purgedate: item["purgedate"],
+            firstuser: item["firstuser"],
+            lastuser: item["lastuser"] == null ? null : item["lastuser"],
+            purgeuser: item["purgeuser"],
+            pmo: item["pmo"],
+            observacoes: item["observacoes"],
+            documento: item["documento"].toString(),
+            documentoTipo: item["documento_tipo"].toString()
+          );
+        }
+    );
+  }
+
+  static Resource<Atividades> get update {
     return Resource(
         url: Constants.ATIVIDADES_URL,
         parse: (response) {

@@ -65,4 +65,16 @@ class Solicitacoes {
         }
     );
   }
+
+  static Resource<List<Solicitacoes>> get update {
+
+    return Resource(
+        url: Constants.SOLICITACOES_URL,
+        parse: (response) {
+          final result = json.decode(response.body);
+          Iterable list = result;
+          return list.map((model) => Solicitacoes.fromJson(model)).toList();
+        }
+    );
+  }
 }
