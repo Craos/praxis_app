@@ -39,7 +39,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>O app Práxis deseja utilizar a câmera do seu dispositivo</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>O app Práxis deseja utilizar o microfone do seu dispositivo</string>
 </dict>
 </plist>

@@ -18,35 +18,78 @@ class detalheSolicitacao extends StatefulWidget {
 }
 
 class _Atividades extends State<detalheSolicitacao> {
-  final ComentarioController = TextEditingController();
+
+  double _inputHeight = 50;
+  final TextEditingController _textEditingController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _textEditingController.addListener(_checkInputHeight);
+    _controller = new ScrollController();
+    _controller.addListener(_scrollListener);
+    carregaAtividades();
+  }
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
+
+  void _checkInputHeight() async {
+    int count = _textEditingController.text.split('\n').length;
+
+    if (count == 0 && _inputHeight == 50.0) {
+      return;
+    }
+    if (count <= 5) {  // use a maximum height of 6 rows
+      // height values can be adapted based on the font size
+      var newHeight = count == 0 ? 50.0 : 28.0 + (count * 18.0);
+      setState(() {
+        _inputHeight = newHeight;
+      });
+    }
+  }
 
   Solicitacoes ItemSolicitacao;
   List<Atividades> listadeAtividades = List<Atividades>();
-  ScrollController _scrollController = new ScrollController();
+  ScrollController _controller;
 
   _Atividades(Solicitacao) {
     ItemSolicitacao = Solicitacao;
   }
 
-  @override
-  void initState() {
-    super.initState();
-    carregaAtividades();
+  _scrollListener() {
+    if (_controller.offset >= _controller.position.maxScrollExtent &&
+        !_controller.position.outOfRange) {
+      setState(() {
+
+      });
+    }
+    if (_controller.offset <= _controller.position.minScrollExtent &&
+        !_controller.position.outOfRange) {
+      setState(() {
+
+      });
+    }
+  }
+
+  _moveDown() {
+    _controller.animateTo(_controller.offset + listadeAtividades.length + 100,
+        curve: Curves.linear, duration: Duration(milliseconds: 500));
   }
 
   void carregaAtividades() {
     Map<String, String> params = {
       "pmo": "eq." + ItemSolicitacao.id.toString(),
-      "order":"id.asc"
+      "order": "id.asc"
     };
 
     Webservice().get(Atividades.all, params).then((itemAtividade) => {
           setState(() => {listadeAtividades = itemAtividade}),
-          _scrollController.animateTo(
-            0.0,
-            curve: Curves.easeOut,
-            duration: const Duration(milliseconds: 300),
-          )
+            _moveDown()
         });
   }
 
@@ -54,7 +97,7 @@ class _Atividades extends State<detalheSolicitacao> {
     Map<String, String> params = {
       "pmo": ItemSolicitacao.id.toString(),
       "firstuser": 'oberdan',
-      "observacoes": ComentarioController.text
+      "observacoes": _textEditingController.text
     };
 
     Webservice()
@@ -62,13 +105,9 @@ class _Atividades extends State<detalheSolicitacao> {
         .then((itemAtividade) => {
               setState(() => {
                     listadeAtividades.insert(
-                        listadeAtividades.length, itemAtividade)
+                        listadeAtividades.length, itemAtividade),
+                    _moveDown()
                   }),
-              _scrollController.animateTo(
-                0.0,
-                curve: Curves.easeOut,
-                duration: const Duration(milliseconds: 300),
-              )
             });
   }
 
@@ -97,11 +136,8 @@ class _Atividades extends State<detalheSolicitacao> {
 
     return Card(
       color: Colors.white,
-      margin: new EdgeInsets.only(top: 2.0),
+      margin: new EdgeInsets.only(top: 1.0),
       elevation: 1,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(2.0),
-      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -177,67 +213,67 @@ class _Atividades extends State<detalheSolicitacao> {
     );
   }
 
+  /*
+  *
+  *
+
+  * */
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: new AppBar(),
-      body: Stack(
-        children: <Widget>[
-
-
-              ListView.builder(
-                scrollDirection: Axis.vertical,
-                controller: _scrollController,
-                shrinkWrap: true,
-                itemCount: listadeAtividades.length,
-                itemBuilder: _buildItemsForListView,
-              ),
-
-
-
-
-
-          Positioned(
-              bottom: 0,
+        backgroundColor: Colors.white,
+        appBar: new AppBar(),
+        body: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            Expanded(
               child: Container(
-                  height: 56,
-                  padding:
-                      EdgeInsets.only(left: 8, top: 4, bottom: 4, right: 8),
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).scaffoldBackgroundColor,
-                      boxShadow: [
-                        BoxShadow(color: Colors.black12, blurRadius: 4)
-                      ]),
-                  width: MediaQuery.of(context).size.width,
-                  child: Container(
-                    padding: EdgeInsets.all(5),
-                    child: Row(
-                      children: <Widget>[
-                        new Flexible(
-                          child: new TextField(
-                            controller: ComentarioController,
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                icon: Icon(Icons.call_to_action),
-                                hintText: 'Detalhes do atendimento'),
-                            style: Theme.of(context).textTheme.body1,
-                          ),
-                        ),
-                        IconButton(
-                            icon: Icon(Icons.insert_comment),
-                            color: Colors.black54,
-                            onPressed: () {
-                              salvarComentario();
-                              ComentarioController.clear();
-                            }),
-                      ],
-                    ),
-                  )
-              )
-          )
-        ],
-      ),
-    );
+                child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  controller: _controller,
+                  reverse: false,
+                  itemCount: listadeAtividades.length,
+                  itemBuilder: _buildItemsForListView,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+                //height: 56,
+                padding: EdgeInsets.only(left: 8, top: 4, bottom: 4, right: 8),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).scaffoldBackgroundColor,
+                    boxShadow: [
+                      BoxShadow(color: Colors.black12, blurRadius: 4)
+                    ]),
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  children: <Widget>[
+                    new Flexible(
+                        child: new TextField(
+                      controller: _textEditingController,
+                          textInputAction: TextInputAction.newline,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          icon: Icon(Icons.call_to_action),
+                          hintText: 'Detalhes do atendimento'),
+                      style: Theme.of(context).textTheme.body1,
+                    )),
+                    IconButton(
+                        icon: Icon(Icons.insert_comment),
+                        color: Colors.black54,
+                        onPressed: () {
+                          salvarComentario();
+                          _textEditingController.clear();
+                        })
+                  ],
+                ))
+          ],
+        ));
   }
 }
