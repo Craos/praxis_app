@@ -7,7 +7,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() => runApp(PraxisApp());
 
 class PraxisApp extends StatelessWidget {
-
   bool first = true;
 
   PraxisApp() {
@@ -16,17 +15,7 @@ class PraxisApp extends StatelessWidget {
 
   _read() async {
     final prefs = await SharedPreferences.getInstance();
-    final key = 'first';
-    first = (prefs.getInt(key) != 1) ?? true;
-    print('first: $first');
-  }
-
-  _save() async {
-    final prefs = await SharedPreferences.getInstance();
-    final key = 'first';
-    final value = 1;
-    prefs.setInt(key, value);
-    print('saved $value');
+    first = prefs.containsKey('primeiroacesso');
   }
 
   @override
@@ -44,7 +33,7 @@ class PraxisApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: Constants.APP_NAME,
       theme: temadoPraxis,
-      home: (first) ? CarouselPage() : Home(title: Constants.APP_NAME),
+      home: (first) ? Home(title: Constants.APP_NAME) : CarouselPage(),
     );
   }
 }

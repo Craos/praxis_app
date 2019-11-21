@@ -4,14 +4,14 @@ import 'package:praxis/widgets/Home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CarouselPage extends StatelessWidget {
-
   confirmaPrimeiroAcesso(context) async {
-    final prefs = await SharedPreferences.getInstance();
-    final key = 'first';
-    final value = 1;
-    prefs.setInt(key, value);
-    print('saved $value');
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Home()));
+    final sharedPreferences = await SharedPreferences.getInstance();
+
+    sharedPreferences.clear();
+    sharedPreferences.setString("primeiroacesso", "visto");
+
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => Home()));
   }
 
   @override
@@ -37,9 +37,12 @@ class CarouselPage extends StatelessWidget {
                 showIndicator: true,
                 indicatorBgPadding: 7.0,
                 images: [
-                  NetworkImage('https://cdn.dribbble.com/users/529161/screenshots/2907884/attachments/602470/splash_screen_full.png'),
-                  NetworkImage('https://cdn-images-1.medium.com/max/2000/1*wnIEgP1gNMrK5gZU7QS0-A.jpeg'),
-                  NetworkImage('https://cdn-images-1.medium.com/max/2000/1*GqdzzfB_BHorv7V2NV7Jgg.jpeg'),
+                  NetworkImage(
+                      'https://cdn.dribbble.com/users/529161/screenshots/2907884/attachments/602470/splash_screen_full.png'),
+                  NetworkImage(
+                      'https://cdn-images-1.medium.com/max/2000/1*wnIEgP1gNMrK5gZU7QS0-A.jpeg'),
+                  NetworkImage(
+                      'https://cdn-images-1.medium.com/max/2000/1*GqdzzfB_BHorv7V2NV7Jgg.jpeg'),
                 ],
               ),
             ),
@@ -56,26 +59,25 @@ class CarouselPage extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child:  FlatButton(
-                      child: Text(
-                        "Iniciar",
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
+                      padding: const EdgeInsets.all(10.0),
+                      child: FlatButton(
+                        child: Text(
+                          "Iniciar",
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ), onPressed: () {
-                        confirmaPrimeiroAcesso(context);
-                    },
-                    )
-                  )
+                        onPressed: () {
+                          confirmaPrimeiroAcesso(context);
+                        },
+                      ))
                 ],
               ),
             ),
           ),
         ],
       ),
-
 
       /*Center(
         child: SizedBox(
