@@ -25,6 +25,7 @@ class Webservice {
 
     if (response.statusCode == HttpStatus.ok) {
       return resource.parse(response);
+
     } else {
       var codigo = response.statusCode;
       throw Exception(

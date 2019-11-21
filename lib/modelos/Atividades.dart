@@ -7,14 +7,16 @@ class Atividades {
   int id;
   DateTime firstdate;
   DateTime lastdate;
-  dynamic purgedate;
+  DateTime purgedate;
   String firstuser;
   String lastuser;
-  dynamic purgeuser;
-  int pmo;
-  String observacoes;
-  dynamic documento;
-  dynamic documentoTipo;
+  String purgeuser;
+  int contrato;
+  String titulo;
+  String descricao;
+  String responsavel;
+  int situacao;
+  int progresso;
 
   Atividades({
     this.id,
@@ -24,28 +26,45 @@ class Atividades {
     this.firstuser,
     this.lastuser,
     this.purgeuser,
-    this.pmo,
-    this.observacoes,
-    this.documento,
-    this.documentoTipo,
+    this.contrato,
+    this.titulo,
+    this.descricao,
+    this.responsavel,
+    this.situacao,
+    this.progresso,
   });
 
-  factory Atividades.fromJson(Map<String, dynamic> json) {
+  factory Atividades.fromJson(Map<String, dynamic> json) => Atividades(
+    id: json["id"],
+    firstdate: DateTime.parse(json["firstdate"]),
+    lastdate: DateTime.parse(json["lastdate"]),
+    purgedate: DateTime.parse(json["purgedate"]),
+    firstuser: json["firstuser"],
+    lastuser: json["lastuser"],
+    purgeuser: json["purgeuser"],
+    contrato: json["contrato"],
+    titulo: json["titulo"],
+    descricao: json["descricao"],
+    responsavel: json["responsavel"],
+    situacao: json["situacao"],
+    progresso: json["progresso"],
+  );
 
-    return Atividades(
-      id: json["id"],
-      firstdate: DateTime.parse(json["firstdate"]),
-      lastdate: json["lastdate"] == null ? null : DateTime.parse(json["lastdate"]),
-      purgedate: json["purgedate"],
-      firstuser: json["firstuser"],
-      lastuser: json["lastuser"] == null ? null : json["lastuser"],
-      purgeuser: json["purgeuser"],
-      pmo: json["pmo"],
-      observacoes: json["observacoes"],
-      documento: json["documento"],
-      documentoTipo: json["documento_tipo"],
-    );
-  }
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "firstdate": firstdate.toIso8601String(),
+    "lastdate": lastdate.toIso8601String(),
+    "purgedate": purgedate.toIso8601String(),
+    "firstuser": firstuser,
+    "lastuser": lastuser,
+    "purgeuser": purgeuser,
+    "contrato": contrato,
+    "titulo": titulo,
+    "descricao": descricao,
+    "responsavel": responsavel,
+    "situacao": situacao,
+    "progresso": progresso,
+  };
 
   static Resource<List<Atividades>> get all {
     return Resource(
@@ -67,17 +86,19 @@ class Atividades {
 
           var item = list.first;
           return new Atividades(
-            id: item["id"],
-            firstdate: DateTime.parse(item["firstdate"]),
-            lastdate: item["lastdate"] == null ? null : DateTime.parse(item["lastdate"]),
-            purgedate: item["purgedate"],
-            firstuser: item["firstuser"],
-            lastuser: item["lastuser"] == null ? null : item["lastuser"],
-            purgeuser: item["purgeuser"],
-            pmo: item["pmo"],
-            observacoes: item["observacoes"],
-            documento: item["documento"].toString(),
-            documentoTipo: item["documento_tipo"].toString()
+              id: item["id"],
+              firstdate: DateTime.parse(item["firstdate"]),
+              lastdate: item["lastdate"],
+              purgedate: item["purgedate"],
+              firstuser: item["firstuser"],
+              lastuser: item["lastuser"],
+              purgeuser: item["purgeuser"],
+              contrato: item["contrato"],
+              titulo: item["titulo"],
+              descricao: item["descricao"],
+              responsavel: item["responsavel"],
+              situacao: item["situacao"],
+              progresso: item["progresso"],
           );
         }
     );
@@ -94,15 +115,17 @@ class Atividades {
           return new Atividades(
             id: item["id"],
             firstdate: DateTime.parse(item["firstdate"]),
-            lastdate: item["lastdate"] == null ? null : DateTime.parse(item["lastdate"]),
+            lastdate: item["lastdate"],
             purgedate: item["purgedate"],
             firstuser: item["firstuser"],
-            lastuser: item["lastuser"] == null ? null : item["lastuser"],
+            lastuser: item["lastuser"],
             purgeuser: item["purgeuser"],
-            pmo: item["pmo"],
-            observacoes: item["observacoes"],
-            documento: item["documento"].toString(),
-            documentoTipo: item["documento_tipo"].toString()
+            contrato: item["contrato"],
+            titulo: item["titulo"],
+            descricao: item["descricao"],
+            responsavel: item["responsavel"],
+            situacao: item["situacao"],
+            progresso: item["progresso"],
           );
         }
     );
