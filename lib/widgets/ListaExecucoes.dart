@@ -264,8 +264,10 @@ class _Execucoes extends State<ListaExecucoes> {
                           _textEditingController.clear();
                         })
                   ],
-                ))
+                )
+            )
           ],
-        ));
+        )
+    );
   }
 }
