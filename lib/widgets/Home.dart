@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:praxis/modelos/Atividades.dart';
+import 'package:praxis/servicos/database_helpers.dart';
 import 'package:praxis/widgets/BottomNavBar.dart';
 import 'package:praxis/utilidades/globals.dart' as globals;
-import 'package:praxis/servicos/webservice.dart';
 import 'package:praxis/widgets/ListaExecucoes.dart';
 
 class Home extends StatefulWidget {
@@ -16,7 +16,6 @@ class Home extends StatefulWidget {
 }
 
 class _app extends State<Home> {
-
   double _inputHeight = 50;
   final TextEditingController _textEditingController = TextEditingController();
 
@@ -25,6 +24,7 @@ class _app extends State<Home> {
   @override
   void initState() {
     super.initState();
+
     CarregaAtividades();
     _textEditingController.addListener(_checkInputHeight);
   }
@@ -41,7 +41,8 @@ class _app extends State<Home> {
     if (count == 0 && _inputHeight == 50.0) {
       return;
     }
-    if (count <= 5) {  // use a maximum height of 6 rows
+    if (count <= 5) {
+      // use a maximum height of 6 rows
       // height values can be adapted based on the font size
       var newHeight = count == 0 ? 50.0 : 28.0 + (count * 18.0);
       setState(() {
@@ -51,40 +52,45 @@ class _app extends State<Home> {
   }
 
   void CarregaAtividades() {
-
-    print('atividades vindo de globals ');
-    print(globals.atividades);
-
-
-    Webservice().get(Atividades.all).then((itemSolicitado) => {
-      setState(() => {
-        listadeSolicitacoes = itemSolicitado
-      })
-    });
+    DatabaseHelper helper = DatabaseHelper.instance;
+    helper.selectAll(Atividades.localdbSelect).then((registros) => {
+          setState(() => {listadeSolicitacoes = registros})
+        });
   }
 
   GestureDetector _buildItemsForListView(BuildContext context, int index) {
 
+    Color corIcone;
+    Color corIconeBg;
+
+
     Color getColor(String selector) {
-      switch (selector) {
-        case '1':
-          return Colors.lightGreen;
-          break;
-        case '2':
-          return Colors.blue;
-          break;
-        case '3':
-          return Colors.deepOrange;
-          break;
-        case '4':
-          return Colors.grey;
-          break;
-        default:
-      }
+
     }
 
     var formatter = new DateFormat('dd/MM/yyyy H:m');
     String firstdade = formatter.format(listadeSolicitacoes[index].firstdate);
+
+
+    switch (listadeSolicitacoes[index].situacao.toString()) {
+      case '1':
+        corIcone = Color(0xFF32cb00);
+        corIconeBg = Color(0xFFb0ff57);
+        break;
+      case '2':
+        corIcone = Color(0xFF64b5f6);
+        corIconeBg = Color(0xFFe3f2fd);
+        break;
+      case '3':
+        corIcone = Color(0xFFe57373);
+        corIconeBg = Color(0xFFffebee);
+        break;
+      case '4':
+        corIcone = Color(0xFF90a4ae);
+        corIconeBg = Color(0xFFeceff1);
+        break;
+      default:
+    }
 
     return GestureDetector(
         child: Card(
@@ -99,8 +105,18 @@ class _app extends State<Home> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 ListTile(
-                  leading: Icon(Icons.assignment_turned_in,
-                      color: getColor(listadeSolicitacoes[index].situacao.toString())
+                  leading: new Container(
+                    width: 50,
+                    height: 50,
+                    decoration: new BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: corIconeBg,
+                    ),
+                    child: Center(
+                        child: Icon(
+                      Icons.assignment_turned_in,
+                      color: corIcone,
+                    )),
                   ),
                   title: DefaultTextStyle.merge(
                       style: TextStyle(
@@ -110,9 +126,7 @@ class _app extends State<Home> {
                         listadeSolicitacoes[index].titulo,
                         style: Theme.of(context).textTheme.title,
                       )),
-                  subtitle:
-                  Text(
-                      listadeSolicitacoes[index].descricao,
+                  subtitle: Text(listadeSolicitacoes[index].descricao,
                       style: Theme.of(context).textTheme.body1),
                 ),
                 ButtonTheme.bar(
@@ -123,7 +137,7 @@ class _app extends State<Home> {
                             color: Theme.of(context).toggleableActiveColor,
                           ),
                           child:
-                          Text(listadeSolicitacoes[index].id.toString())),
+                              Text(listadeSolicitacoes[index].id.toString())),
                       DefaultTextStyle.merge(
                           style: TextStyle(
                             color: Theme.of(context).toggleableActiveColor,
@@ -164,12 +178,10 @@ class _app extends State<Home> {
                     return AlertDialog(
                         actions: <Widget>[
                           IconTheme(
-                            data: IconThemeData(
-                                size: 24, color: Colors.blue),
+                            data: IconThemeData(size: 24, color: Colors.blue),
                             child: Padding(
-                              child: Icon(
-                                  Icons.playlist_add_check
-                              ), padding: EdgeInsets.all(10),
+                              child: Icon(Icons.playlist_add_check),
+                              padding: EdgeInsets.all(10),
                             ),
                           ),
                         ],
@@ -207,15 +219,14 @@ class _app extends State<Home> {
                                   ),
                                   new Flexible(
                                       child: new TextField(
-                                        controller: _textEditingController,
-                                        textInputAction: TextInputAction.newline,
-                                        keyboardType: TextInputType.multiline,
-                                        maxLines: null,
-                                        decoration: InputDecoration(
-                                            hintText: 'Detalhes da tarefa'),
-                                        style: Theme.of(context).textTheme.body1,
-                                      )
-                                  ),
+                                    controller: _textEditingController,
+                                    textInputAction: TextInputAction.newline,
+                                    keyboardType: TextInputType.multiline,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                        hintText: 'Detalhes da tarefa'),
+                                    style: Theme.of(context).textTheme.body1,
+                                  )),
                                 ])));
                   });
             }),

@@ -72,9 +72,11 @@ class PraxisApp extends StatelessWidget {
     ThemeData temadoPraxis = ThemeData(
         backgroundColor: Color(0xfff4f6fb),
         primaryColor: Colors.indigo,
+        secondaryHeaderColor: Colors.purple,
         toggleableActiveColor: Colors.deepPurple,
         errorColor: Colors.deepOrange,
         textTheme: new TextTheme(
+            subtitle : new TextStyle(color: Color(0xff38006b)),
             body1: new TextStyle(color: Colors.black45, fontSize: 14),
             title: new TextStyle(color: Colors.indigo, fontSize: 16)
         )

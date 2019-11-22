@@ -29,21 +29,20 @@ class CarouselPage extends StatelessWidget {
                 boxFit: BoxFit.cover,
                 autoplay: true,
                 animationCurve: Curves.fastOutSlowIn,
-                animationDuration: Duration(milliseconds: 1000),
+                animationDuration: Duration(milliseconds: 1270),
                 dotSize: 6.0,
                 dotIncreasedColor: Color(0xFFFF335C),
-                dotBgColor: Colors.blue,
-                dotPosition: DotPosition.topRight,
+                dotBgColor: Colors.transparent,
+                dotPosition: DotPosition.topCenter,
                 dotVerticalPadding: 10.0,
                 showIndicator: true,
                 indicatorBgPadding: 7.0,
                 images: [
-                  NetworkImage(
-                      'https://cdn.dribbble.com/users/529161/screenshots/2907884/attachments/602470/splash_screen_full.png'),
-                  NetworkImage(
-                      'https://cdn-images-1.medium.com/max/2000/1*wnIEgP1gNMrK5gZU7QS0-A.jpeg'),
-                  NetworkImage(
-                      'https://cdn-images-1.medium.com/max/2000/1*GqdzzfB_BHorv7V2NV7Jgg.jpeg'),
+                  ExactAssetImage("images/1.png"),
+                  ExactAssetImage("images/2.jpg"),
+                  ExactAssetImage("images/3.jpg"),
+                  ExactAssetImage("images/4.jpg"),
+                  ExactAssetImage("images/5.jpg"),
                 ],
               ),
             ),
@@ -72,38 +71,14 @@ class CarouselPage extends StatelessWidget {
                         onPressed: () {
                           confirmaPrimeiroAcesso(context);
                         },
-                      ))
+                      )
+                  )
                 ],
               ),
             ),
           ),
         ],
       ),
-
-      /*Center(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: Carousel(
-            boxFit: BoxFit.cover,
-            autoplay: true,
-            animationCurve: Curves.fastOutSlowIn,
-            animationDuration: Duration(milliseconds: 1000),
-            dotSize: 6.0,
-            dotIncreasedColor: Color(0xFFFF335C),
-            dotBgColor: Colors.blue,
-            dotPosition: DotPosition.topRight,
-            dotVerticalPadding: 10.0,
-            showIndicator: true,
-            indicatorBgPadding: 7.0,
-            images: [
-              NetworkImage('https://cdn.dribbble.com/users/529161/screenshots/2907884/attachments/602470/splash_screen_full.png'),
-              NetworkImage('https://cdn-images-1.medium.com/max/2000/1*wnIEgP1gNMrK5gZU7QS0-A.jpeg'),
-              NetworkImage('https://cdn-images-1.medium.com/max/2000/1*GqdzzfB_BHorv7V2NV7Jgg.jpeg'),
-            ],
-          ),
-        ),
-      ),*/
     );
   }
 }
