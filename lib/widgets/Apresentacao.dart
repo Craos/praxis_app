@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class CarouselPage extends StatelessWidget {
   confirmaPrimeiroAcesso(context) async {
+
     final sharedPreferences = await SharedPreferences.getInstance();
 
     sharedPreferences.clear();

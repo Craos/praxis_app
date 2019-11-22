@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:praxis/servicos/webservice.dart';
-import 'package:praxis/utilidades/constants.dart';
+import 'package:praxis/utilidades/globals.dart' as globals;
 
 class Execucao {
 
@@ -60,7 +60,7 @@ class Execucao {
 
   static Resource<List<Execucao>> get all {
     return Resource(
-        url: Constants.EXECUCAO_URL,
+        url: globals.EXECUCAO_URL,
         parse: (response) {
           final result = json.decode(response.body);
           Iterable list = result;
@@ -71,7 +71,7 @@ class Execucao {
 
   static Resource<Execucao> get insert {
     return Resource(
-        url: Constants.EXECUCAO_URL,
+        url: globals.EXECUCAO_URL,
         parse: (response) {
           final result = json.decode(response.body);
           Iterable list = result;
@@ -97,7 +97,7 @@ class Execucao {
   static Resource<List<Execucao>> get update {
 
     return Resource(
-        url: Constants.EXECUCAO_URL,
+        url: globals.EXECUCAO_URL,
         parse: (response) {
           final result = json.decode(response.body);
           Iterable list = result;

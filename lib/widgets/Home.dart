@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:praxis/modelos/Atividades.dart';
 import 'package:praxis/widgets/BottomNavBar.dart';
-import 'package:praxis/utilidades/constants.dart';
+import 'package:praxis/utilidades/globals.dart' as globals;
 import 'package:praxis/servicos/webservice.dart';
 import 'package:praxis/widgets/ListaExecucoes.dart';
 
@@ -51,6 +51,11 @@ class _app extends State<Home> {
   }
 
   void CarregaAtividades() {
+
+    print('atividades vindo de globals ');
+    print(globals.atividades);
+
+
     Webservice().get(Atividades.all).then((itemSolicitado) => {
       setState(() => {
         listadeSolicitacoes = itemSolicitado
@@ -88,7 +93,7 @@ class _app extends State<Home> {
             elevation: 3,
             shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.all(
-                  new Radius.circular(Constants.APP_BORDER_RADIUS)),
+                  new Radius.circular(globals.APP_BORDER_RADIUS)),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -170,7 +175,7 @@ class _app extends State<Home> {
                         ],
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(
-                                Radius.circular(Constants.APP_BORDER_RADIUS))),
+                                Radius.circular(globals.APP_BORDER_RADIUS))),
                         title: Row(
                           children: <Widget>[
                             Icon(
