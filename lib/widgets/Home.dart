@@ -30,14 +30,29 @@ class _app extends State<Home> {
   void initState() {
     super.initState();
 
-    carregaAtividades();
+    _controller = new ScrollController();
+    _controller.addListener(_scrollListener);
     _textEditingController.addListener(_checkInputHeight);
+
+    carregaAtividades();
+
   }
 
   @override
   void dispose() {
     _textEditingController.dispose();
     super.dispose();
+  }
+
+  _scrollListener() {
+    if (_controller.offset >= _controller.position.maxScrollExtent &&
+      !_controller.position.outOfRange) {
+      setState(() {});
+    }
+    if (_controller.offset <= _controller.position.minScrollExtent &&
+      !_controller.position.outOfRange) {
+      setState(() {});
+    }
   }
 
   _moveDown() {
@@ -78,6 +93,7 @@ class _app extends State<Home> {
         setState(() =>
         {
           listaAtividades.insert(listaAtividades.length, itens),
+          _moveDown(),
           Navigator.of(context).pop()
         }),
       });
@@ -114,7 +130,7 @@ class _app extends State<Home> {
         break;
       case '4':
         corIcone = Color(0xFF32cb00);
-        corIconeBg = Color(0xFFb0ff57);
+        corIconeBg = Color(0xFFccff90);
         break;
       default:
     }
@@ -123,7 +139,7 @@ class _app extends State<Home> {
       child: Card(
         color: Colors.white,
         margin: new EdgeInsets.only(left: 5, top: 5, right: 5, bottom: 3),
-        elevation: 3,
+        elevation: globals.APP_ELEVATION,
         shape: RoundedRectangleBorder(
           borderRadius: new BorderRadius.all(
             new Radius.circular(globals.APP_BORDER_RADIUS)),
@@ -188,7 +204,8 @@ class _app extends State<Home> {
                         .of(context)
                         .toggleableActiveColor,
                     ),
-                    child: Text(firstdade)),
+                    child: Text(firstdade)
+                  ),
                 ],
               ),
             ),
@@ -199,7 +216,7 @@ class _app extends State<Home> {
           context,
           MaterialPageRoute(
             builder: (context) =>
-              ListaExecucoes(listaAtividades[index])));
+              listaExecucoes(listaAtividades[index])));
       });
   }
 
@@ -314,6 +331,7 @@ class _app extends State<Home> {
       ]),
       body: ListView.builder(
         itemCount: listaAtividades.length,
+        controller: _controller,
         itemBuilder: _construirListadeAtividades,
       ),
       bottomNavigationBar: BottomNavyBar(),

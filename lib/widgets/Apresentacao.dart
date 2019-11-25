@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:praxis/widgets/Home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:praxis/utilidades/globals.dart' as globals;
 
 class CarouselPage extends StatelessWidget {
   confirmaPrimeiroAcesso(context) async {
@@ -52,7 +53,7 @@ class CarouselPage extends StatelessWidget {
             left: 10.0,
             right: 10.0,
             child: Card(
-              elevation: 8.0,
+              elevation: globals.APP_ELEVATION,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
               ),

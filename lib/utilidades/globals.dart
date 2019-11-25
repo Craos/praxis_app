@@ -2,10 +2,14 @@ library praxis.globals;
 import 'package:praxis/modelos/Atividades.dart';
 
 List<Atividades> atividades;
+var firstCamera;
+
+
 String ATIVIDADES_URL = 'http://api.craos.net/praxis/atividades';
 String EXECUCAO_URL = 'http://api.craos.net/praxis/execucao';
 String APP_NAME = 'Práxis';
 double APP_BORDER_RADIUS = 5;
+double APP_ELEVATION = 2;
 String APP_DB = ''' 
     
         create table atividades
@@ -41,3 +45,6 @@ String APP_DB = '''
         );
     
     ''';
+
+void logError(String code, String message) =>
+  print('Erro: $code\n Messagem: $message');

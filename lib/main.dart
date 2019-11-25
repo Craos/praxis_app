@@ -7,8 +7,11 @@ import 'package:praxis/widgets/Home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'servicos/database_helpers.dart';
 
+
 void main() => runApp(PraxisApp());
 
+
+// ignore: must_be_immutable
 class PraxisApp extends StatelessWidget {
 
   bool first = true;
