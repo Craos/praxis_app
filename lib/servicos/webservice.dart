@@ -47,6 +47,7 @@ class Webservice {
     Uri uri = Uri.parse(resource.url);
     final newURI = uri.replace(queryParameters: queryParameters);
     final body = json.encode(params);
+    print(body);
     final response = await http.post(newURI, body: body, headers: headers);
 
     var codigo = response.statusCode;
@@ -54,6 +55,7 @@ class Webservice {
     if (response.statusCode == HttpStatus.created) {
       return resource.parse(response);
     } else {
+      print(response.body);
       throw Exception(
           "Falha na requisição o servidor retornou o erro: $codigo");
     }

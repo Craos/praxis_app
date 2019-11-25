@@ -5,19 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="177e8640-4495-43db-8c84-2af0fe7195fa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/images/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Flutter/App.framework/App" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/App.framework/App" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/App.framework/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/App.framework/flutter_assets/AssetManifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/App.framework/flutter_assets/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/App.framework/flutter_assets/LICENSE" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Flutter/App.framework/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/App.framework/flutter_assets/kernel_blob.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/Apresentacao.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Apresentacao.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/modelos/Atividades.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/modelos/Atividades.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/servicos/webservice.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/servicos/webservice.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/Home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/Home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/ListaExecucoes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/ListaExecucoes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/praxis.iml" beforeDir="false" afterPath="$PROJECT_DIR$/praxis.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
@@ -33,14 +34,14 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5X_API_29_x86" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="3300ac44a162a293" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/widgets/ListaExecucoes.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="55" column="51" selection-start-line="55" selection-start-column="2" selection-end-line="55" selection-end-column="51" />
+            <state relative-caret-position="300">
+              <caret line="20" column="79" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="79" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -49,21 +50,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/modelos/Execucao.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1140">
-              <caret line="76" column="33" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#22#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
+            <state relative-caret-position="622">
               <caret line="78" selection-start-line="78" selection-end-line="78" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -75,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/modelos/Atividades.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="131" column="24" selection-start-line="131" selection-start-column="24" selection-end-line="131" selection-end-column="24" />
+            <state relative-caret-position="570">
+              <caret line="113" column="4" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="4" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -87,8 +76,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/widgets/Home.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="88" column="37" selection-start-line="88" selection-start-column="37" selection-end-line="88" selection-end-column="37" />
+            <state relative-caret-position="219">
+              <caret line="274" column="20" selection-start-line="274" selection-start-column="20" selection-end-line="274" selection-end-column="20" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -97,13 +86,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/widgets/BottomNavBar.dart">
+        <entry file="file://$PROJECT_DIR$/lib/servicos/database_helpers.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-298">
-              <caret line="32" column="7" selection-start-line="29" selection-start-column="31" selection-end-line="32" selection-end-column="7" />
+            <state relative-caret-position="152">
+              <caret line="52" column="25" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#0#19#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/servicos/webservice.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="89">
+              <caret line="61" column="2" selection-start-line="61" selection-start-column="2" selection-end-line="61" selection-end-column="2" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.0+2/lib/http.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="163">
+              <caret line="169" selection-start-line="169" selection-end-line="169" />
             </state>
           </provider>
         </entry>
@@ -111,7 +121,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/widgets/Apresentacao.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
+            <state relative-caret-position="420">
               <caret line="31" column="61" selection-start-line="31" selection-start-column="61" selection-end-line="31" selection-end-column="61" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -123,8 +133,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pubspec.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="57" column="14" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
+            <state relative-caret-position="213">
+              <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -141,11 +151,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>title</find>
-      <find>Solicitacoes</find>
       <find>icon</find>
       <find>Iterable</find>
-      <find>CarregaAtividades</find>
       <find>result</find>
       <find>IdTarefa</find>
       <find>listview</find>
@@ -164,13 +171,16 @@
       <find>hint</find>
       <find>MyCustomAppBar</find>
       <find>_inputHeight</find>
-      <find>_textEditingController</find>
       <find>Execu</find>
       <find>json</find>
       <find>listadeAtividades</find>
       <find>quote</find>
       <find>print</find>
       <find>insert</find>
+      <find>CarregaAtividades</find>
+      <find>_formKey</find>
+      <find>Atividades</find>
+      <find>_textEditingController</find>
     </findStrings>
     <replaceStrings>
       <replace>ResponderAtividade</replace>
@@ -187,8 +197,8 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
-        <option value="Oberdan Brito &lt;oberdan@craos.net&gt;" />
         <option value="Oberdan &lt;oberdan@craos.net&gt;" />
+        <option value="Oberdan Brito &lt;oberdan@craos.net&gt;" />
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -221,33 +231,32 @@
         <option value="$PROJECT_DIR$/lib/widgets/AdicionarTarefa.dart" />
         <option value="$PROJECT_DIR$/lib/widgets/DetalheAtividade.dart" />
         <option value="$PROJECT_DIR$/lib/widgets/ListviewAtividades.dart" />
-        <option value="$PROJECT_DIR$/lib/widgets/ListaExecucoes.dart" />
         <option value="$PROJECT_DIR$/lib/modelos/database_helpers.dart" />
-        <option value="$PROJECT_DIR$/lib/servicos/webservice.dart" />
         <option value="$PROJECT_DIR$/lib/utilidades/constants.dart" />
         <option value="$PROJECT_DIR$/lib/modelos/Execucao.dart" />
         <option value="$PROJECT_DIR$/lib/utilidades/globals.dart" />
         <option value="$PROJECT_DIR$/lib/servicos/database_helpers.dart" />
-        <option value="$PROJECT_DIR$/lib/modelos/Atividades.dart" />
         <option value="$PROJECT_DIR$/lib/main.dart" />
-        <option value="$PROJECT_DIR$/pubspec.yaml" />
         <option value="$PROJECT_DIR$/lib/widgets/Apresentacao.dart" />
+        <option value="$PROJECT_DIR$/lib/widgets/ListaExecucoes.dart" />
+        <option value="$PROJECT_DIR$/pubspec.yaml" />
+        <option value="$PROJECT_DIR$/lib/servicos/webservice.dart" />
+        <option value="$PROJECT_DIR$/lib/modelos/Atividades.dart" />
         <option value="$PROJECT_DIR$/lib/widgets/Home.dart" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="23" />
-    <option name="width" value="1280" />
-    <option name="height" value="730" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-325" />
+    <option name="y" value="-1057" />
+    <option name="width" value="1542" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -264,6 +273,12 @@
               <item name="praxis_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="praxis_app" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="modelos" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="praxis_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="praxis_app" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="widgets" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -271,14 +286,17 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
+    <property name="editor.config.ad.shown" value="true" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Dart" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -378,13 +396,21 @@
       <option name="project" value="LOCAL" />
       <updated>1574443204805</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Ajuste nos icones das tarefas">
+      <created>1574466974896</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1574466974896</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="730" extended-state="6" />
+    <frame x="-325" y="-1057" width="1542" height="1057" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19709209" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16266666" />
       <window_info id="Captures" order="1" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -394,16 +420,16 @@
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Dart Analysis" order="0" weight="0.3284553" />
-      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.49964362" visible="true" weight="0.54308945" />
+      <window_info active="true" anchor="bottom" id="Run" order="1" sideWeight="0.49964362" visible="true" weight="0.27813163" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="4" weight="0.3284553" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.68603355" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.3715499" />
       <window_info anchor="bottom" id="Terminal" order="6" weight="0.3284553" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5003564" side_tool="true" weight="0.3206704" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5003564" side_tool="true" weight="0.3205945" />
       <window_info anchor="bottom" id="Flutter Performance" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32908705" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.21117319" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.21019109" />
       <window_info anchor="bottom" id="Find" order="11" weight="0.3284553" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" weight="0.32956383" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
@@ -424,15 +450,16 @@
     <MESSAGE value="Recurso do splash screen" />
     <MESSAGE value="Reparo no armazenamento do sharedpreferences do splash screen" />
     <MESSAGE value="Download de atividades e atualizaçõa do banco de dados local" />
-    <option name="LAST_COMMIT_MESSAGE" value="Download de atividades e atualizaçõa do banco de dados local" />
+    <MESSAGE value="Ajuste nos icones das tarefas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajuste nos icones das tarefas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/servicos/database_helpers.dart</url>
-          <line>51</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/lib/widgets/Home.dart</url>
+          <line>43</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -471,20 +498,6 @@
     <entry file="file://$PROJECT_DIR$/lib/modelos/tmp.dart" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.0+2/lib/http.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="44" column="26" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/widgets/framework.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3934">
-          <caret line="936" column="15" selection-start-line="936" selection-start-column="15" selection-end-line="936" selection-end-column="15" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/widgets/ComentarAtividade.dart" />
     <entry file="file://$PROJECT_DIR$/lib/widgets/PopmenuAtividade.dart" />
@@ -604,23 +617,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/widgets/ListviewAtividades.dart">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/widgets/ListviewAtividades.dart" />
     <entry file="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.0+2/lib/src/base_response.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/servicos/webservice.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -634,47 +635,10 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/bug-report.md">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/modelos/Execucao.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="76" column="33" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/widgets/ListaExecucoes.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="55" column="51" selection-start-line="55" selection-start-column="2" selection-end-line="55" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/servicos/database_helpers.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="56" column="12" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/utilidades/globals.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="57" column="14" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -685,19 +649,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="78" selection-start-line="78" selection-end-line="78" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/widgets/BottomNavBar.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-298">
+        <state relative-caret-position="465">
           <caret line="32" column="7" selection-start-line="29" selection-start-column="31" selection-end-line="32" selection-end-column="7" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
@@ -707,7 +661,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/widgets/Apresentacao.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
+        <state relative-caret-position="420">
           <caret line="31" column="61" selection-start-line="31" selection-start-column="61" selection-end-line="31" selection-end-column="61" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
@@ -715,25 +669,125 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/modelos/Atividades.dart">
+    <entry file="file://$PROJECT_DIR$/lib/modelos/Execucao.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="131" column="24" selection-start-line="131" selection-start-column="24" selection-end-line="131" selection-end-column="24" />
+        <state relative-caret-position="525">
+          <caret line="76" column="33" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/widgets/Home.dart">
+    <entry file="file://$PROJECT_DIR$/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="88" column="37" selection-start-line="88" selection-start-column="37" selection-end-line="88" selection-end-column="37" />
+        <state relative-caret-position="622">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/widgets/ListaExecucoes.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="79" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="79" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/foundation/assertions.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="110" column="26" selection-start-line="110" selection-start-column="26" selection-end-line="110" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/gestures/recognizer.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="194" column="4" selection-start-line="194" selection-start-column="4" selection-end-line="194" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/modelos/Atividades.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="113" column="4" selection-start-line="113" selection-start-column="4" selection-end-line="113" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/servicos/database_helpers.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="52" column="25" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/servicos/webservice.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="61" column="2" selection-start-line="61" selection-start-column="2" selection-end-line="61" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.0+2/lib/http.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="169" selection-start-line="169" selection-end-line="169" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/widgets/framework.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1159" column="5" selection-start-line="1159" selection-start-column="5" selection-end-line="1159" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/widgets/Home.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="274" column="20" selection-start-line="274" selection-start-column="20" selection-end-line="274" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

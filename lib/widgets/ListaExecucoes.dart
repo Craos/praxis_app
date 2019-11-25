@@ -95,9 +95,9 @@ class _Execucoes extends State<ListaExecucoes> {
       "observacoes": _textEditingController.text
     };
 
-    Webservice().post(Execucao.insert, params: params).then((itemAtividade) => {
+    Webservice().post(Execucao.insert, params: params).then((itens) => {
           setState(() => {
-                listaExecucoes.insert(listaExecucoes.length, itemAtividade),
+                listaExecucoes.insert(listaExecucoes.length, itens),
                 _moveDown()
               }),
         });
